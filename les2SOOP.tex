@@ -1,0 +1,268 @@
+\chapter{Het softwareontwikkelingsproces}
+\section{De software crisis}
+
+In het boek, ``The Mythical Man-Month'' \cite{Brooks1975} beschrijft Frederick Brooks een wet die later bekend werd als Brooks' Law:
+
+\begin{center}
+``Adding manpower to a late software project makes it later''
+\end{center}
+
+Brooks zegt zelf dat dit een simplificatie van het probleem is, maar wijst toch op twee erg belangrijke zaken:
+
+\begin{enumerate}
+	\item Het duurt even alvorens mensen die nieuw in een project toekomen productief worden. Software projecten zijn complexe ondernemingen en nieuwe projectmedewerkers moeten zich eerst een lange tijd inwerken alvorens ze mee zijn met het project zonder dat ze gedurende die periode een toegevoegde waarde kunnen leveren. Ook moeten de bestaande werkers tijd investeren in de nieuwe aangenomen projectmedewerkers. Daarenboven kan een nieuwe medewerker (daarom niet moedwillig) bugs introduceren in de code, waar 
+	\begin{inparaenum}[(i)] 
+		\item lang naar toe kan gezocht worden en 
+		\item lang aan kan gewerkt worden om ze op te lossen.
+	\end{inparaenum}
+	\item Communiceren wordt erg moeilijk: het aantal mogelijke communicatiemogelijkheden stijgt polynomiaal bij het toevoegen van nieuwe medewerkers. 
+\end{enumerate}
+
+Blijkbaar helpt het toevoegen van meer mankracht in een project niet. De oorzaak van het falen van de projecten ligt dus blijkbaar ergens anders. 
+
+\section{Oorzaken software crisis}
+Er zijn twee soorten problemen die je kan tegen komen in de ontwikkeling van software.
+\begin{itemize}
+	\item Tamme problemen
+	\item Gemene problemen (wicked)
+\end{itemize}
+
+\subsection{Tamme problemen}
+Tamme problemen zijn stabiele en goed gedefinieerde problemen. Vaak zijn deze problemen goed afgebakend en is  er een pasklare oplossing.
+
+Denk hierbij bijvoorbeeld aan:
+\begin{itemize}
+	\item Hardwareproblemen
+	\item Ziekte van werknemer
+	\item Tijdelijk uitvallen van netwerk
+	\item \dots
+\end{itemize}
+
+\subsection{Wicked problems}
+Wicked problemen daarentegen zijn vaag: je snapt pas het probleem eenmaal de oplossing ervoor geformuleerd is. Het is vaak onduidelijk wanneer ze opgelost zijn en ze zijn uniek voor de omgeving waarin je werkt. 
+
+Denk hierbij aan:
+\begin{itemize}
+	\item Veranderende wens van de klant
+	\item Introductie van nieuwe technologie\"en die je midden ontwikkeling zou willen gebruiken
+	\item \dots
+\end{itemize}
+
+\begin{exercise}
+	Vind zelf wat mogelijk tamme en wicked problemen.
+\end{exercise}
+
+\subsection{One wicked problem: clients}
+Een groot wicked probleem is dat de opdrachtgevers vaak zelf niet goed weten wat ze willen. Of zoals Brooks het vermeldt:
+
+\begin{center}
+``\textit{For the truth is, the clients do not know what they want. They usually do not kwow what question must be answered, and they almost never have thought of the problem in the detail that must be specified.}''
+\end{center}
+
+en Jeff Atwood
+\begin{center}
+\textit{In software, we rarely have meaningful requirements.  Even if we do, the only measure of success that matters is whether our solution solves the customer's shifting idea of what their problem is.}
+\end{center}
+
+We moeten dus een manier vinden om met de wisselende wensen van de opdrachtgever om te gaan.
+
+
+\section{Softwareontwikkelingsproces}
+Als beginnende ontwikkelaar van software ga je vaak de fout maken dat je onmiddellijk zou willen programmeren. Je kent makkelijk een aantal programmeertalen en leuke technische snufjes die je zou willen toepassen. Maar dit zou je gedurende het proces zuur kunnen komen te staan. 
+
+Het is beter enkele vragen eerst te stellen, alvorens je de IDE erbij neemt.
+\begin{itemize}
+	\item Waar moet ik starten?
+	\item Hoe moet ik er aan beginnen?
+	\item Wat daarna?
+\end{itemize}
+
+Het antwoord op deze vragen is het volgen van een software ontwikkelproces. Een ontwikkelproces structureert je project zodat je bepaalde taken stap voor stap kan uitvoeren en je niet in 10 verschillende richtingen tegelijk werkt en alles in 1 keer klaar wilt hebben.
+
+Een proces is een workflow die de volgorde vastlegt waarin je de dingen doet in een software project. 
+
+Een analoog hierbij is volgende opdracht.
+
+\begin{exercise}
+Stel dat je een huis moet bouwen voor iemand. Het is hun droomhuis.  Ze hebben verschillende ide\"en op hun verlanglijst en je moet ook nog de normale dingen toevoegen die je in een huis kan vinden : muren, vloeren, keuken \dots
+
+Vraag jezelf nu eens af waar je zou beginnen.
+\end{exercise}
+
+Formeel kan je het softwareontwikkelingsproces als volgt defini\"eren.
+\begin{definition}
+	Het software ontwikkelingsproces is  een kader dat vastlegt hoe een softwareproject wordt aangepakt en 
+een methode om de activiteiten in verband met creatie, oplevering en onderhoud van softwaresystemen te organiseren.
+\end{definition}
+
+\subsection{Onderdelen van een SOOP}
+Je kan verschillende onderdelen onderscheiden bij het het softwareontwikkelingsproces:
+\begin{enumerate}
+	\item De analyse
+	\item Het ontwerp
+	\item Implementatiefase
+	\item Testfase
+	\item Integratie
+	\item Onderhoudsfase
+\end{enumerate}
+
+In wat volgt beschrijven we deze fasen kort:
+
+\subsection{Analyse}
+De studie en de beschrijving van het probleem: we moeten achterhalen wat het systeem moet doen en wat de randvoorwaarden zijn. We zorgen ervoor dat het probleem vertaald wordt in een taal die zowel verstaanbaar is voor de klant, als voor de mensen die het eigenlijke ontwerpen en implementeren voor zich zullen nemen. De analyse kan  verschillende componenten omvatten. We noemen er hier een aantal op en zullen verder doorheen de cursus verduidelijkt worden.
+\begin{itemize}
+	\item Use Cases (UC)
+	\item User stories
+	\item Opmaken van een domeinmodel
+	\item Sequentiediagrammen
+	\item \dots
+\end{itemize}
+
+Er moet gelet worden dat de software:
+\begin{itemize}
+	\item voldoet aan de taken en functies beschreven in de Use Cases en functionele specificaties;
+	\item voldoet aan alle technische vereisten; 
+	\item eenvoudig aan te passen is wanneer functionele eisen wijzigen.
+\end{itemize}
+
+\subsection{Ontwerp}
+Deze fase omvat het specificeren van de nodige onderdelen van het te bouwen systeem: welke componenten zijn er nodig, kan ik hergebruiken en hoe werken die samen met elkaar. 
+Het ontwerpmodel dient als abstractie van de broncode; het is een (gedetailleerd) plan dat beschrijft hoe de broncode wordt gestructureerd en geschreven. Het ontwerpmodel bestaat uit klassen, gestructureerd in modules en subsystemen, met duidelijk beschreven interfaces. Het bevat ook de beschrijving over hoe deze klassen met elkaar samenwerken. Je zal hier meer over leren tijdens de lessen Object ge\"orienteerd ontwerp.
+
+\subsection{Implementeren}
+Dit is het eigenlijke coderen van het systeem: we vertellen in een taal verstaanbaar voor de computer hoe die de verschillende functies moet uitvoeren.
+Hierin komt naar voor:
+ 
+ \begin{itemize}
+		\item het vastleggen van de organisatie van de broncode;
+		\item het implementeren van subsystemen;
+		\item het vastleggen van klassen en objecten;
+		\item het testen van de ontwikkelde componenten (Unittesten);
+		\item het integreren van de resultaten van individuen tot een systeem.
+\end{itemize}
+
+
+\subsection{Testen \& Valideren}
+In de analysefase worden een aantal testscenario's opgemaakt. In de testfase gaan we dus na of de software werkt en verwacht aan de verwachtingen van de klant. Hier komt naar voor:
+\begin{itemize}
+	\item Het controleren van de interactie tussen verschillende objecten;
+	\item Het controleren van de integratie van verschillende componenten;
+	\item Het controleren van het systeem om te kijken of alle requirements juist zijn ge\"mplementeerd;
+	\item Het in kaart brengen en prioritiseren van defecten.
+\end{itemize}
+
+\subsection{Integratie}
+Indien het systeem moet samenwerken met andere bestaande componenten of systemen, zal dat gebeuren in de integratiefase. Natuurlijk zal hier ook een test en validatiemoment moeten ingelast worden.
+
+\subsection{Onderhoud}
+Eenmaal de software af is, kunnen er nog wijzigingen doorgevoerd worden ten behoeve van veranderende eisen van de klant of vanuit een andere omgeving. 
+
+\section{Watervalmethode}
+Een eerste ontwikkelproces is de watervalmethode: bij de waterval methode, volgt de ene stap na de andere. De eerste stap moet volledig zijn afgerond alvorens aan de volgende kan worden gestart en er is geen weg terug. Elke fase voorziet cruciale activiteit(en), de fasen zelf zijn georganiseerd in een sequenti\"le en lineaire ordening waarbij elke fase volledig moet be\"indigd zijn voor de volgende kan aangevangen worden. De uitvoer van die fasen wordt gebruikt als invoer voor de volgende. Dit is het oudste ontwikkelingsproces : goed voor wel gekende systemen met weinig problemen en stabiele requirements. Maar dit is echter zelden het geval.
+
+\begin{example}
+	Het is augustus. Hartje zomer. In een grote vergaderruimte vindt de kick-off plaats van een groot project. Enthousiast presenteert de projectleider zijn planning. De analyse neemt 3 maanden in beslag. In november gaat het ontwerp van start. Medio januari van het volgend jaar leveren de ontwerpers op en aansluitend start de ontwikkeling van de nieuwe applicatie. Omdat de functionaliteit complex is neemt deze fase 6 maanden in beslag, zo is begroot. Dit betekent dat de applicatie, na uitvoering en testen in september wordt opgeleverd. Iedereen van opdrachtgevers tot ontwikkelaars, knikt instemmend. Een haalbare planning.
+Inmiddels is men een jaar verder. Het is weer augustus en het ontwerp is nagenoeg gereed. ``We zijn op 90 procent '', zeggen de ontwerpers. Er spreekt meer hoop dan realisme. De projectleider extrapoleert de uitloop. In het huidige tempo wordt de applicatie in mei volgend jaar opgeleverd. Ruim een half jaar later dan gepland. En het project is nog niet halverwege. Nog meer uitloop is niet denkbeeldig.
+\end{example}
+
+Uit voorgaand voorbeeld kunnen we de nadelen van de watervalmethode opsommen:
+\begin{enumerate}
+	\item \textbf{Geen flexibiliteit}: omdat de ontwikkelfasen zo definitief zijn, gaan analisten, ontwerpers en ontwikkelaars behoedzaam te werk. Er is geen weg terug en dus moet het op te leveren werk volledig correct zijn. Dit voorkomt  dat er nieuwe wensen en eisen ontstaan tijdens een project bv doordat de gebruikers dit eisen. 
+	\item \textbf{Verlies van informatie}: zodra een ontwerper klaar is met zijn fase gaat de ontwikkelaar ermee aan de slag. In de meeste projecten is dit het moment waarop de ontwerper het project verlaat. En al is hij nog grondig te werk gegaan, nooit is alles compleet. De meeste kennis zit in het hoofd van de ontwerper en deze kennis zal op dat moment niet meer voorhanden zijn.
+	\item \textbf{Testen als sluitpost} : pas als de applicatie door de ontwikkelaars is opgeleverd wordt  er getest. Probleem : naarmate een fout later in het project wordt ontdekt, nemen de kosten voor het oplossen van de out functioneel toe. Het is belangrijk fouten zo vroeg mogelijk te detecteren. 
+\end{enumerate}
+
+\section{Iteratief en incrementeel werken: Agile}
+
+Bij iteratief benaderen is er ook een weg terug. Agile software ontwikkeling is een conceptueel raamwerk voor het uitvoeren van softwareontwikkelingsprojecten als alternatief voor traditionele starre praktijken. Het Engelse woord agile betekent: behendig, lenig. De omslag heeft plaats gevonden vanwege de vele tekortkomingen die zich voor doen in de waterval methode. Lange (ontwikkel) trajecten, onvolledige o verouderde documentatie als ook een vast te volgen plan hebben allemaal een negatieve invloed op het eindproduct.
+Agile ontwikkeling richt zich voor als voornaamste taak op het leveren van een product waar de klant tevreden over is. Agile projecten trachten dit te bereiken door het ontwikkelproces te benaderen met een proactieve houding naar de klant toe, als ook een dynamische en ``open voor verandering'' mentaliteit.
+
+\subsection{Agile}
+In februari 2001 kwamen 17 prominenten op het terrein van Agile-ontwikkeling bijeen. De groep stelde het Agile Manifest \cite{Kent} op, waarnaar puristische Agile-ontwikkelaars nog altijd graag verwijzen. Enkele principes uit het Manifest: 
+\begin{itemize}
+	\item Klanttevredenheid door snelle levering van bruikbare software op continue basis.
+	\item Regelmatig aanbod van nieuwe werkende software (eerder per week dan per maand).
+	\item Wijziging van doelstellingen zijn welkom, zelfs laat in het proces.
+	\item Nauwe samenwerking op dagelijkse basis tussen ontwikkelaars en hun belanghebbenden.
+	\item Direct persoonlijk contact.
+	\item Eenvoud.
+	\item Zelf-organiserende teams.
+	\item Voortdurende aanpassing aan veranderende omstandigheden.
+\end{itemize}
+
+Agile ontwikkelingsmethoden zijn al veel ouder dan het manifest. Zo kent Scrum - een bekende Agile methode met vaste samenstelling bestaande uit een projectleider, een projecteigenaar en een team - zijn wetenschappelijke 'coming out' in 1986. Extreme Programming en DSDM zijn van medio jaren negentig, toen deze nog bekend stonden als 'light-weight-methods'.
+
+\subsubsection{Contra Waterval}
+Alle varianten van Agile methodes zetten zich af tegen het 'waterval-ontwikkelmodel': een model dat bestaat uit vast omlijnde fases waarbij het hoogste niveau als eerste wordt uitgevoerd en daarna de lagere - gelijk een waterval. Een model dat oorspronkelijk afkomstig is uit de bouwsector, waar aanpassingen naderhand hand prijzig, zo niet onmogelijk zijn.
+
+Dit watervalmodel - dat pas naar een volgende fase gaat als de vorige is afgesloten- zou te bindend zijn, te log en te bureaucratisch (veel papierwerk!). In tegenstelling tot de Agile methodes, die rekening kunnen houden met veranderende doelstellingen en zich bevrijden van bureaucratie door de nadruk op persoonlijk contact.
+
+Tegelijkertijd lijkt dat ook de zwakte van Agile ontwikkeling: als plannen telkens veranderen en communicatie niet in documenten vastligt, ligt de weg open naar willekeur en chaos. Daarom moet er een organisatie staan die past bij de Agile methode: een open, communicatieve cultuur waarin competente mensen het vertrouwen krijgen om beslissingen te nemen.
+
+\section{(Rational)Unified Proces}
+Een vorm van Agile ontwikkeling is het Rational Unified Proces \cite{VantEinde2014} (kortweg RUP). Deze methode is gebaseerd op onderstaande best practices:
+
+\begin{enumerate}
+	\item \textbf{Ontwikkel software iteratief}: ontwikkelen in korte overzichtelijke perioden genaamd iteraties. Binnen de iteraties hebben de klassieke activiteiten zoals: planning, analyse, ontwerp, testen en documentatie allemaal een plaats zij het gericht op de omvang van de iteratie zelf. Een Agile project team bestaat dan ook uit personen die elk zich gespecialiseerd zijn in een van deze vaardigheden.
+	\item \textbf{Ontwikkel software incrementeel}: zorg dat je na elke iteratie een werkend product aflevert. Naast de risico's te verminderen (er kan een volledig systeem getest worden), wordt ook aan de klant dan een deel van het product geleverd die direct gebruikt kan worden. Die kan dan ook zijn opmerkingen onmiddellijk meegeven. Dit verkleint het risico dat het eindproduct niet is wat de klant wil en de klant kan nu per deelproduct zijn feedback geven wat je weer kunt meenemen tijdens de ontwikkeling van het volgende deelproduct. De fasen worden herhaaldelijk doorlopen. 
+	
+	\end{enumerate}
+Daarnaast worden nog enkele raadgevingen meegegeven aan de mensen in het project:
+	\begin{enumerate}
+	\item \textbf{Maak gebruik van component gebaseerde architectuur}: Systemen met een op componenten gebaseerde architectuur zijn eenvoudig uit te breiden, inzichtelijk, begrijpelijk en bevorderen het hergebruik van bepaalde delen code. Aangezien de systemen steeds groter worden neemt het belang van een goede architectuur toe. RUP is erop gericht de basisarchitectuur in een vroeg stadium te bepalen, en naarmate het systeem groter wordt zal de architectuur zich verder uitbreiden. Bij iteratief ontwikkelen is het mogelijk de componenten geleidelijk in kaart te brengen om ze vervolgens te ontwikkelen, te kopen of te hergebruiken.
+	\item \textbf{Maak gebruik van prototypes}: Door de gebruiker een grafische voorstelling te geven van het product (prototyping), verkleint de faalkans van het project. Een globale, grafische oplossing voor het probleem is door de gebruiker beter te begrijpen dan pagina's vol broncode. Het is een versimpeling van de complexiteit. Naast prototypes komen in deze fase ook use cases, use case diagrammen, klassendiagrammen en andere objecten naar voren.
+	\item \textbf{Test het systeem}: Het bepalen van de kwaliteit van een systeem gebeurt op basis van testen. Dit is een van de punten waarop software projecten vaak falen omdat het testen vaak aan het einde van het project wordt gedaan, soms helemaal niet en soms door andere teams. RUP vangt dit probleem af door het testen in het gehele proces terug te laten komen en daarbij alle belanghebbenden (stakeholders) te betrekken (zowel programmeurs als klanten). RUP gaat er vanuit dat elke belanghebbende verantwoordelijk is voor de kwaliteit gedurende het gehele project
+	\item \textbf{Maak gebruik van versiebeheer tijdens de software-ontwikkeling}: Zoals bij alle andere software-projecten zijn veranderingen in de software onvermijdelijk. RUP beschrijft een aantal methoden om deze veranderingen te beheersen en nauwkeurig te volgen. RUP beschrijft ook beveiligde werkruimtes, hierin staat bijvoorbeeld dat het systeem van een programmeur niet aangetast mag worden door veranderingen in een ander systeem.
+\end{enumerate}
+
+
+\section{Object Ge\"ori\"enteerde analyse}
+In de lessen analyse gaan we object geori\"enteerd (OO) te werk. In dit stuk halen we kort aan wat deze term inhoudt.
+
+OOP streeft er naar om een project zo structureel mogelijk op te bouwen in objecten en klassen. Dit heeft voor de programmeur het grote voordeel dat code vanaf nu in logische componenten wordt opgedeeld en veel makkelijker te hergebruiken is.
+
+Om het concept van objecten te illustreren kan je bijvoorbeeld denken aan een auto Audi A4. De auto is het object en dit object heeft bepaalde eigenschappen. Een eigenschap van de auto kan bv de kleur, zetelbekleding \dots zijn. Een auto heeft ook een aantal onderdelen waaruit het bestaat, die ook voorgesteld kunnen worden als object. Denk hierbij maar aan een deur, een band \dots Maar een auto heeft ook functies. Een functie kan starten of remmen zijn. Dus hebben we nu eigenlijk een object met eigenschappen en functies die in relatie kan staan met andere bestaande objecten. Het is op deze manier dat we ons modellering gaan toepassen. 
+
+\begin{definition}
+	In een object georie\"nteerde methodologie worden zaken beschreven aan de hand van klassen. Klassen bevatten eigenschappen en methoden/functies. Een instantie van een dergelijke klasse is een object: het bevat de concrete waarden voor de eigenschappen van zijn klasse en heeft de mogelijkheid de methoden en functies uit te voeren.
+\end{definition}
+
+
+
+\section{UML}
+De Unified Modelling Language (UML) is een taal om diagrammen te maken of een notatiewijze om modellen van objectgeori\"nteerde softwaresystemem te specificeren, te visualiseren en te documenteren \cite{Hensgen2003}. UML is geen ontwikkelmethode, d.w.z. het vertelt je niet wat je eerst moet doen en wat daarna, of hoe u uw systeem moet ontwerpen, maar het helpt je om uw systeem te visualiseren en te communiceren met anderen. UML staat onder toezicht van de Object Management Group (OMG) en is de industriestandaard voor het grafisch weergeven van software. 
+
+UML is opgebouwd uit vele modelelementen die de verschillende delen van een softwaresysteem vertegenwoordigen. De UML-elementen worden gebruikt om diagrammen te maken, die een bepaald deel of een gezichtspunt van een systeem voorstellen. 
+
+\subsection{Diagramma}
+In wat volgt introduceren we de diagrammen die we zullen gebruiken doorheen de cursus.
+\subsubsection{Use Case diagrammen}
+Use case-diagrammen beschrijven de relaties en afhankelijkheden tussen een groep van use cases en de actoren die deelnemen aan het proces.
+
+Belangrijk om op te merken is dat use case-diagrammen niet geschikt zijn om het ontwerp te representeren, en niet het inwendige van een systeem kunnen beschrijven. Use case-diagrammen zijn bedoeld om de communicatie met de toekomstige gebruikers van een systeem, en met de klant, te vergemakkelijken, en zijn in het bijzonder behulpzaam bij het vaststellen van welke benodigde kenmerken een systeem moet hebben. Use case diagrammen vertellen wat het systeem moet doen maar specificeren niet - en kunnen dat ook niet - hoe dit gerealiseerd moet worden.
+
+\subsubsection{Klassendiagrammen}
+Klassendiagrammen tonen de verschillende klassen waaruit het systeem is gemaakt, en hoe zij aan elkaar gerelateerd zijn. Van klassendiagrammen zegt men dat zij \textit{statische} diagrammen zijn omdat zij weliswaar de klassen weergeven, samen met hun methoden en attributen, alsmede de statische relaties tussen hen (i.e. welke klassen ''hebben weet`` van welke klassen of welke klassen ''maken deel uit`` van een andere klasse), maar niet de methode-aanroepen tussen hen onderling weergeven. 
+
+\subsection{Activiteitsdiagrammen}
+Activiteitsdiagrammen beschrijven de volgorde van activiteiten in een systeem net behulp van activiteiten. Activiteitsdiagrammen zijn een bijzondere vorm van toestandsdiagrammen, die alleen (of voornamelijk) activiteiten bevatten. 
+
+\subsubsection{Sequentiediagrammen}
+Deze geven de berichtenuitwisseling weer (bijv. methode-aanroep) tussen verscheidene objecten in een specifieke tijd-begrensde situatie. Objecten zijn instanties van klassen. Sequentiediagramma leggen speciale nadruk op de volgorde waarin en de tijdstippen waarop de berichten naar de objecten verstuurd worden.
+
+In volgordediagrammen worden objecten gerepresenteerd door verticale onderbroken lijnen, met de naam van het object bovenaan. De tijd-as loopt ook verticaal, en neemt toe naar beneden, zodat berichten verstuurd worden van het ene object naar de nadere in de vorm van pijlen met de namen van de operatie en de parameters erbij. 
+
+\subsection{Voordelen van UML}
+\begin{itemize}
+	\item UML wordt gebruikt in een verscheidenheid van doeleinden en de leesbaarheid en herbruikbaarheid maken het een ideale keuze voor ontwikkelaars.
+	\item De visualisatie vergemakkelijkt de communicatie tussen de ontwikkelaars en de opdrachtgever.
+	\item Door informatie in een diagram te verwerken, is het gemakkelijk om relaties van een programma te begrijpen en te visualiseren . 
+	\item Visualisatie maakt het gemakkelijk voor een nieuwe programmeur om te stappen in een project en productief te zijn vanaf dag een. 
+	\item  Een aantal UML tools kunnen code genereren op basis van de diagramma. Dit vermindert overhead.
+	\item \dots
+\end{itemize}
+
+\begin{exercise}
+	Zoek zelf een aantal extra voordelen van UML.
+\end{exercise}
+

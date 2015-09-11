@@ -1,0 +1,169 @@
+\chapter{Klasse diagram - Domeinmodel}
+
+\section{Introductie}
+Vaak als je over UML diagramma spreekt, wordt gesproken over klasse diagramma. 
+
+\begin{definition}
+Een klassendiagram (Engels: class diagram) is een formele representatie van concepten en hun onderlinge statische relaties.
+\end{definition}
+
+Klassediagramma tonen ook de eigenschappen en operaties van een bepaalde klasse en 
+en de beperkingen op de relaties tussen de klassen. 
+
+Het domeinmodel is daarbij een speciale versie van het klassendiagram,
+waarbij technologie specifieke zaken nog weg gelaten worden. Ze worden vooral
+gebruikt om de statische relaties tussen de klassen te tonen en moeten 
+verstaanbaar zijn voor zowel de opdrachtgever van het softwareproduct
+als de ontwerpers en de mensen verantwoordelijk voor de implementatie. 
+
+\subsection{Nut van domeinmodel}
+
+\begin{itemize}
+\item Domeinklassen zijn heel belangrijk omdat je daarmee de kern van het probleem (en de oplossing) met behulp van een betrekkelijk klein aantal begrippen kunt beschrijven.
+
+\item Met behulp van het domeinmodel kan je nog eens afstemmen met de klant of je heel goed begrijpt hoe alles ineen zit (relaties tussen klassen).
+
+\item Conceptuele domeinklassen vormen dan ook een belangrijk uitgangspunt en inspiratiebron voor het ontwikkelen van de softwareklassen ( klassen met datatypes en gedrag) waaruit een domeinlaag in een applicatie is opgebouwd.
+\end{itemize}
+
+\section{Klassendiagram en UML}
+Het domeinmodel is een  visuele representatie van concepten uit de werkelijkheid en hun onderlinge relatie. We visualiseren dit via een UML klassendiagram. 
+
+\subsection{Klassen}
+Een klasse is het basisblok van een domeinmodel. Het wordt voorgesteld door een rechthoek
+met bovenaan de naam van de klasse. 
+
+\subsection{Properties of eigenschappen}
+Een property (eigenschap) beschrijft een structurele eigenschap van de klasse. Deze 
+komen in twee vormen voor: 
+\begin{enumerate}
+	\item Attribuut
+	\item Associatie
+\end{enumerate}
+
+\subsubsection{Attribuut}
+Een attribuut beschrijft een eigenschap als een stuk in de klasse rechthoek. In 
+de analyse gaan we nog geen type, multipliciteit en zichtbaarheid meegeven bij
+een attribuut. Dit komt wel aan bod bij ontwerpen.
+
+\subsubsection{Associatie}
+Een andere manier om een eigenschap te modelleren is via een associatie. Een associatie
+is een rechte lijn tussen twee klassen, en kan gericht zijn met een bron en eindklasse. We gebruiken een associatie indien we vaststellen  dat er, gedurende het bestaan (of een deel er van) van de deelnemende klassen een relevant verband of een zinvolle relatie bestaat.
+
+Deze richting is niet verplicht en duidt erop dat de associatie in twee richtingen kan gelezen
+worden.  Een associatie heeft altijd een volgende eigenschappen:
+\begin{itemize}
+	\item De naam van de associatie of associatienaam
+	\item Een multipliciteit: via een multipliciteit kunnen we aangeven hoeveel instanties van de ene klasse verbonden zijn met 1 instantie van de andere klasse. Let op: De multipliciteit communiceert hoeveel instanties geassocieerd kunnen worden met een andere instantie, op een bepaald moment en niet over een bepaald tijdsbestek. Er wordt vaak een minimum- en maximummultipliciteit gedefinieerd.
+	
+\begin{itemize}
+	\item Minimum
+			\begin{itemize}
+			\item Optioneel : 0
+			\item Verplicht (mandatory) : 1
+		\end{itemize}
+	\item Maximum
+	\begin{itemize}
+		\item Met 1 enkele waarde : 1
+		\item Met meerdere waarden (multivalued) : n of *
+	\end{itemize}
+\end{itemize}
+
+\end{itemize}
+
+Het kan optioneel ook volgende eigenschappen bevatten:
+\begin{itemize}
+	\item Een rolnaam bij het einde van de associatie
+	\item De leesrichting van de associatie.
+\end{itemize}
+
+\begin{exercise}
+	Een reflexieve associatie is een associatie van een klasse met zichzelf. Kan dergelijke
+	associatie bestaat met minimummultipliciteit 1? 
+\end{exercise}
+
+\subsubsection{Wanneer welke modellering}
+Zowel attributen als associaties kunnen ongeveer dezelfde informatie overbrengen.
+Je gebruikt een attribuut voor kleine eigenschappen, zoals bijvoorbeeld de kleur van 
+een auto. Associaties gebruik je voor belangrijke eigenschappen, vaak tussen meerdere
+klassen.
+
+\begin{exercise}
+	Maak de oefeningen vanuit de slides (schaakspel) en de andere oefeningen. De oefeningen kan je bespreken op het forum.
+\end{exercise}
+
+\section{Speciale associaties}
+\subsection{Generalisatie}
+Wanneer twee klassen veel eigenschappen gemeenschappelijk hebben, kunnen we dat modelleren aan de hand van generalisatie. In UML, plaatst een generalisatie-associatie tussen twee klassen hen in een hi\"erarchie die het concept van overerving van een afgeleide klasse van een basisklasse representeert. Zo is bijvoorbeeld de klasse Gebruiker een generalisatie van de klasse student, of met andere wooredn, een student is een bepaald type gebruiker. In UML, worden generalizaties weergegeven door een lijn, die de twee klassen met elkaar verbindt, met een pijlpunt aan de kant van de basisklasse. 
+
+\subsection{Associatieklasse}
+Een associatieklasse laat je toe om attributen en andere eigenschappen
+toe te voegen aan een associatie. Een associatieklasse voegt een extra beperking toe, 
+zodat er maar een instantie (object) van de associatieklasse kan bestaan tussen de 
+twee participerende objecten.  Een associatieklasse is 
+
+\begin{itemize}
+	\item gerelateerd aan een associatie
+	\item heeft een levensduur  afhankelijk van de associatie tussen de participerende objecten.
+\end{itemize}
+
+\subsection{Aggregatie}
+Aggregatie duidt op een deel-van relatie tussen twee klassen. Bijvoorbeeld waarbij de 
+klanten gezien worden gezien als onderdeel van een bank. Of waarbij werkmateriaal zoals
+een bijl en een zaag gezien worden als onderdeel van een gereedschapskist. Hierbij is het 
+dus belangrijk dat de relatie een relatie is tussen gelijken: een object van de ene klasse
+kan bestaan zonder het object van de andere klassen (een bijl kan bestaan zonder 
+gereedschapskist).
+
+Een dergelijke aggregatie wordt aangegeven bij een open ruit, waarbij de  open ruit het 
+geheel voorstelt (de gereedschapskist) en het andere deel is het deel (de bijl).
+
+\subsection{Compositie}
+Een compositie is opnieuw een relatie tussen twee klassen waarbij de focus ligt op de 
+deel-geheel structuur. Enkel geldt de voorwaarde dat de ene klasse zonder de andere kan
+niet: een van de deelnemende klassen heeft de andere nodig om te bestaan. Denk hierbij
+aan het voorbeeld van het schaakbord dat bestaat uit verschillende vakjes. Een vakje
+kan niet bestaan zonder schaakbord.
+
+Een dergelijke compositie wordt voorgesteld door een volle ruit aan de klasse die het geheel
+voorstelt. De deelklasse wordt verbonden via een lijn.
+
+Bij compositie geldt dat:
+\begin{itemize}
+	\item een instantie van het onderdeel behoort tot juist 1 instantie van het geheel
+	\item een instantie van een onderdeel behoort steeds toe tot een instantie van het geheel, het bestaat dus nooit alleen
+	\item een instantie van het geheel is verantwoordelijk voor de creatie en vernietiging van zijn onderdelen
+\end{itemize}
+
+\subsubsection{Klein woordje over compositie en aggregatie}
+Compositie en aggregatie worden enkele gebruik voor deel-geheel relaties te duiden. Het zijn
+dan op zich dus ook gewoon relatie. Indien je dus twijfelt of iets een aggregatie
+of compositie is, kan je het best een gewone associatie gebruiken want een aggregatie/compositie kan altijd voorgesteld worden door een associatie. Omgekeerd natuurlijk niet!
+
+\begin{exercise}
+	Leg in je eigen woorden vorige statement uit. Waarom kan een aggregatie of compositie altijd voorgesteld worden door een associatie, maar een willekeurige associatie niet door een compositie of aggregatie?
+\end{exercise}
+
+\subsection{Afhankelijk}
+Een afhankelijkheid (dependency) bestaat tussen twee elementen indien een verandering van het ene element een verandering van het andere element meebrengt. 
+
+Een voorbeeld maakt het misschien duidelijk. Een scherm wordt gemaakt die de informatie
+van een klant voorstelt in een bank. Dan kan er een afhankelijkheid bestaan tussen de klasse
+scherm en klant, want indien er iets verandert aan de informatie van de klant (we willen
+bijvoorbeeld zijn geboortedatum ook bijhouden), dan zal het scherm moeten aangepast worden
+want we willen dit ook tonen. 
+
+Een afhankelijk bestaat maar in 1 richting en de richting is van de afhankelijke klasse naar
+de onafhankelijke klasse.
+
+Er is een gevaar bij gebruik van afhankelijkheden: als je veel afhankelijkheden gebruikt in een complex systeem, dan zal een kleine veranering in het systeem wel eens een cascade van
+veranderingen meebrengen in het systeem. Opgepast dus!
+
+\begin{exercise}
+	Leg in uw eigen woorden uit waarom het gebruik van afhankelijkheden af te raden is. Gebruik hiervoor een voorbeeld.
+\end{exercise}
+
+
+
+
+

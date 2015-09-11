@@ -1,0 +1,137 @@
+\chapter{Use Cases}
+
+\section{Inleiding}
+
+Om direct met de deur in huis te vallen geven we hier de definitie van een Use Case (of kortweg UC) zoals beschreven in \cite{Jacobson2012}.
+\begin{definition}
+	Een use case omvat alle manieren waarop het systeem gebruikt kan worden om een bepaald doel voor een bepaalde gebruiker te behalen. Een complete set use cases geeft je alle zinvolle manieren om het systeem te gebruiken en illustreert de waarde die dit zal opleveren.
+\end{definition}
+
+Daarbijhorend geven we ook onmiddelijk al de definitie van een scenario:
+
+\begin{definition}
+	Een scenario is een opeenvolging van stappen die beschrijven hoe een gebruiker of entiteit buiten het systeem interageert met dat systeem. 
+\end{definition}
+
+Een andere definitie van UC kan dan als volgt gegeven worden:
+
+\begin{definition}
+	Een use case is een set van scenario's die samen verwerkt zijn om een gedeelde user goal te bereiken.
+\end{definition}
+
+UC's worden vaak gebruikt om het verhaal dat de opdrachtgever vertelt aan de ontwikkelaars te structureren en begrijpbaar te maken. Use cases maken inzichtelijk wat een systeem moet doen en, door doelbewuste weglating, wat het
+systeem niet zal doen. Ze maken ideevorming, scope management en incrementele ontwikkeling mogelijk van ieder type systeem van iedere omvang. Neem het voorbeeld hieronder: de gebruiker vertelt een verhaal maar het is nog niet duidelijk wat het systeem (niet) moet kunnen met wie/wat.
+
+\begin{example}
+Onze klant wil graag een simulatie krijgen van een dobbelspel.  De klant meldt ons meteen dat als dit spelletje aanslaat, er dan heel snel uitbreidingen kunnen volgen. Hij beschrijft ons hieronder wat dit simulatiespel allemaal moet kunnen: ''Het spel is vrij eenvoudig``. Een speler gooit met twee dobbelstenen. Die eerste worp is belangrijk. Werpt hij 7 of 11, dan wint de speler onmiddellijk het spel met een score 2. Anders moet hij dit specifieke aantal ogen - van de eerste worp - nog eens werpen vooraleer hij een 7 of een 11 werpt, ook dan wint hij maar met een score 1. Een speler kan pas spelen als hij voldoende krediet heeft. Een nieuwe speler start met een krediet van 5, hij kan een aanvraag indienen om dat krediet te verhogen - een beheerder controleert de betalingen. Het krediet kan verhoogd worden door te betalen of door spelletjes te winnen. Het is een spel dat iedereen dus afzonderlijk kan spelen, maar we willen als dit aanslaat in een verder stadium ook graag tornooien opstellen.  Elke speler moet  gekend zijn in het spel zodat we een klassement kunnen opstellen. We organiseren dit nu als volgt: afhankelijk van het aantal deelnemers, starten we met een aantal tafels. Stel dat er vijf mensen aan 1 tafel zitten, dan mag iedere speler dit spel $5 + 1$ keer spelen. Van die tafel wordt een rangorde opgesteld, de twee beste gaan door naar de volgende rond. Daar worden terug groepjes gemaakt. Terug de twee beste gaan door.  Dan kom je aan de ronde waar er maar drie tafels meer overschieten.  Hier gaat slechts telkens de beste door. Deze drie beste spelers spelen dan de finale. Soms worden de spelers willekeurig in groepen verdeeld om het tornooi te starten, soms worden ze op basis van vorige klassementen bij elkaar geplaatst. Daarnaast heb ik ook nog allerhande extra mogelijkheden in mijn hoofd: er bestaan ook spelvarianten van dit dobbelspel. Een eerste voorbeeld hiervan is dat de speler maximaal vijf maal mag gooien met de dobbelstenen.  Een ander voorbeeld kan zijn dat het cijfer 2 ook zorgt - naast een 7 of een 11 - dat de speler wint.  Nog een ander wijziging die mogelijk is, is het aantal wedstrijden dat per ronde gespeeld wordt. De mogelijkheden zijn eindeloos, maar misschien moeten we eerst zorgen dat we het basisspel via pc kunnen spelen?
+\end{example}
+
+\subsection{Basisprincipes}
+Er zijn zes basisprincipes die ten grondslag liggen aan iedere succesvolle toepassing vna use cases:
+
+\begin{enumerate}
+	\item Simpliciteit
+	\item Het grotere geheel begrijpen
+	\item Focus op waarde
+	\item Bouw het systeem op in slices
+	\item Lever het systeem incrementeel op (zie verder)
+	\item Sluit aan op de behoeften van het team
+\end{enumerate}
+
+\section{Onderdelen van een UC}
+
+Een UC is opgedeeld uit verschillende onderdelen. 
+\begin{enumerate}
+	\item We beginnen met de beschrijving van het \textbf{main succes scenario (MSS)} of \textbf{normaal verloop}. Je beschrijft dit als een genummerde sequentie van stappen. Deze stappen moeten eenvoudig zijn en beschrijven wie welke stap uitvoert. 
+	\item Andere scenario's beschrijf je als variaties van het MSS: \textbf{extenties} of \textbf{alternatief verloop}. Deze kunnen succesvol aflopen of fouten zijn die het systeem moet aankunnen. Een extentie start bij het nummer waar het in het MSS anders loopt en beschrijft kort de reden waarom het anders verloopt. De volgende stappen worden opnieuw genummerd dan (zoals in het MSS). 
+	\item Elke use case heeft een \textbf{primary actor} of \textbf{primaire actor}, die het systeem gebruikt voor een bepaalde service. Er kunnen meerdere primaire actoren zijn. Let op, een actor hoeft niet per definitie een mens te zijn, het kan ook een ander softwarepakket of entiteit zijn.
+	\item Een korte beschrijving legt kort uit waarvoor de UC dient.
+	\item \textbf{Precondities} beschrijven de voorwaarden waaraan moeten voldaan zijn alvorens de UC succesvol kan aflopen.
+	\item \textbf{Postconditites} beschrijven de voorwaarden (de staat waarin het systeem zich bevindt) waaraan voldaan moeten zijn als de UC succesvol afloopt. 
+	\item \textbf{Domeinregels} zijn  regels die opgelegd worden aan onderdelen van de UC. 
+\end{enumerate}
+
+\section{UC diagramma}
+Het use case diagram \cite{UCDiagram} is een grafische weergave van de scope van het systeem waar duidelijk wordt wat de actoren zijn en wat hun relaties zijn met de use cases.
+ 
+Het use case diagram bestaat uit stokfiguren, ellipsen, lijnen en kaders. Daarnaast wordt er ook nog gebruik gemaakt van de pijlrelaties include en extend.
+
+\subsection{Use Cases}
+\begin{itemize}
+	\item Use cases zijn ellipsen in het diagram en bevatten een korte maar krachtige omschrijving.
+	\item De omschrijving is een combinatie van een werkwoord en een zelfstandig naamwoord dat wordt gebruikt in het domein van de belanghebbenden.
+\end{itemize}
+
+\subsection{Actoren}
+\begin{itemize}
+	\item Actoren zijn personen, organisaties of externe systemen en worden voorgesteld door een stokfiguur.
+	\item Actoren staan buiten het systeem maar communiceren wel direct met het systeem.
+	\item Een entiteit kan meerdere actoren representeren omdat deze meerdere rollen kan hebben.
+	\item Een actor die belang heeft om een bepaald doel te halen is een primaire actor.
+\end{itemize}
+
+\subsection{Relaties}
+\begin{itemize}
+	\item  Een relatie bestaat zodra de actor betrokken is bij een use case. De primaire actor zet vaak zelfs de use case in gang.
+  \item Relaties tussen use cases en actoren worden als vaste lijnen weergegeven.
+\end{itemize}
+
+Er zijn twee speciale relaties tussen UC's:
+\begin{itemize}
+	\item Includes: een verplichte uitvoering van een deel Use Case in een andere use case.
+	\item Extends: een afwijking van het normale verloop
+\end{itemize}
+
+Het is good practice om een Use Case diagram niet overdreven ingewikkeld te maken. Vermijd dus in de mate van het mogelijke includes en extends
+
+\subsection{Het systeem}
+\begin{itemize}
+	\item Het systeem wordt voorgesteld door een rechthoek en duidt de scoop aan van het systeem. 
+	\item Kaders worden alleen om use cases heen gezet. Alle use cases buiten het kader behoren niet tot de scope.
+\end{itemize}
+
+\section{Belang van Use Cases}
+
+\subsection{Specificatie van functionele eisen}
+Zoals al beschreven hierboven gaan we in een UC modelleren wat het systeem moet kunnen in interactie met een actor - dit heet men functionele vereisten.
+
+\subsection{Eenheid van planning}
+Use cases kunnen ook gebruikt worden als eenheid van planning om uw software af te leveren. Dit kan kort in volgende stappen:
+\begin{enumerate}
+	\item Identificeer de benodigde use cases.
+	\item Sorteer de use cases volgens prioriteit
+	\item Schat de ontwikkeltijd van de use cases
+	\item Bepaal de lengte van uw iteratie en lever de ge\"implementeerde UC's incrementeel af.
+\end{enumerate}
+
+Een use-case hoeft dan geen complete beschrijving te zijn en al zijn testgevallen te bevatten. Je kan beginnen met de basis use case en slechts een testgeval. Met aanvullende UC's kun je dan het systeem compleet maken en veiligstellen dat alle testgevallen worden meegenomen. Dit is een zeer
+flexibel opdeelmechanisme, dat je in staat stelt om iteraties te maken die precies groot of klein genoeg zijn
+om de ontwikkeling goed te kunnen aansturen.
+
+
+\subsection{Basis voor aanmaken functionele testen}
+\textit{Use case testing} is een techniek die ons in staat stelt om test cases te ontdekken die het systeem testen van begin tot einde. Elk verschillend scenario moet uitgewerkt worden in de software en moet dus ook getest worden. Onze software zal voldoen aan de functionaliteitseisen enkel en alleen als elk scenario inderdaad werkt en blijft werken. Dit moet grondig uitgetest worden.
+
+
+\subsection{Basis voor analyse en ontwerp}
+De analyse in functie van UC's wordt later gebruikt bij het ontwerp (zie de lessen Ontwerp).
+
+\subsection{Basis voor UI storyboard}
+Zie slides
+
+\section{Activity Diagram}
+Een activiteitendiagram is een techniek die toelaat om procedurele logica en workflow te visualiseren. Use Cases scenario zijn procedureel en kunnen dus visueel voorgesteld worden via een activiteitendiagram.
+In wat volgt beschrijven we de methode en componenten van een AC-diagram.
+
+\begin{enumerate}
+	\item Start met een initial node, voorgesteld door een zwarte cirkel
+	\item Maak voor elke stap in uw scenario een actie (action), voorgesteld door een rechthoek.
+	\item Verbind elke action met een lijnstuk met pijl, die de workflow aanduidt.
+	\item Voor elk alternatief scenario ga je naar de actie waar het alternatief scenario begint. 
+	\begin{enumerate}
+		\item Teken  een decision node (keuzeknoop) voorgesteld door een ruit. Deze actie waar het alternatief scenario begint verbindt je met de decision node.
+		\item Zo'n decision node heeft een guard, een voorwaarde die aanduidt welke pijl gevolgd moet worden. Deze guard schrijf je tussen vierkante haakjes (bv. $[x=1]$). 
+		\item Bij elke pijl die vertrekt uit de decision node schrijf je de invulling van die guard (ook tussen vierkante haakjes).
+	\end{enumerate}
+	\item Bij het einde van de worklow maak je een final activity node, voorgesteld door een zwart cirkel omringt door een lege cirkel. Je kan hierbij nog een beschrijving zetten van de staat waarin je ge\"eindigd bent.
+\end{enumerate}

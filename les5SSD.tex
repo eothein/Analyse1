@@ -1,0 +1,144 @@
+\chapter{Systeem Sequentie Diagram}
+
+\section{Sequentie diagram}
+
+\begin{definition}
+Een sequentiediagram is een diagram dat hoofdzakelijk toont hoe een sequentie van interacties tussen verschillende objecten verloopt, in de volgorde dat de interacties zich voordoen. 
+\end{definition}
+
+Een sequentie diagram beschrijft hoe groepen objecten met elkaar communiceren in het verwezenlijken van het systeemgedrag. Deze samenwerking wordt uitgevoerd als reeks berichten tussen objecten. Het SD beschrijft de gedetailleerde implementatie van een enkele use case (of een variatie van een enkele use case). De sequence diagrammen zijn niet nuttig om het gedrag binnen een object te tonen. Overweeg om voor dat doel een state-transition diagram te gebruiken.
+
+Ze worden gebruikt om aan te geven hoe verschillende objecten met elkaar omgaan. Een van de belangrijkste aspecten van een SD is dus om de functionele vereisten van een Use Case te gaan verfijnen. Ook zijn ze vaak een erg goede visueel hulpmiddel om deze functionele vereisten te modelleren.
+
+\section{Voorstelling}
+
+Een SD wordt dus gebruikt om sequenties van boodschappen te modelleren. De nadruk ligt niet zozeer op de boodschappen zelf, maar wel op de volgorde waarin deze boodschappen verzonden worden. Niettegenstaande, gaat een SD wel defini\"eren welke boodschap er verzonden wordt tussen objecten. Een SD vertaalt deze informatie in een horizontale en verticale dimensie: 
+\begin{itemize}
+	\item Verticaal: de tijd waar de messages gebeuren 
+	\item Horizontaal: de objecten die de messages versturen en ontvangen.
+\end{itemize}
+
+\subsection{Lifeline}
+Lifelines stellen een rol of een object voor die participeren in de sequentie die gemodelleerd wordt. Ze worden getekend als een rechthoek met een stippellijn die recht naar beneden gericht is. Deze levenslijn stelt de tijd voor : deze loopt van boven naar beneden. Indien het object niet wordt vernietigd tijdens de collaboratie zal deze levenslijn dus tot onderaan het diagram doorlopen. De naam van de rol of het object wordt in de rechthoek geplaatst. Deelnemers worden als volgt weergegeven ``\texttt{Naam: Type}''  Meestal wordt alleen het type vermeld voorafgegaan door een :. Hieraan kan je zien dat het om een object gaat. Voor een specifiek object is in elk geval het benoemen van het type, de klasse verplicht. De naam van het object weerspiegelt de rol die dat specifiek object als participant heeft in het diagram en is optioneel. Men spreekt van een anoniem object. (object zonder naam of waarvan de naam niet relevant is). We kunnen dit weg laten als de rol van de participant direct duidelijk is, of als dat object het enige is van het bewuste type in het diagram. Bvb in 4 op een rij zijn er 2 spelers, dan moet je wel een onderscheid maken tussen speler1 en speler2. (In eerdere versies van UML werden objecten onderstreept, in UML 2.0 echter niet meer)
+
+
+
+\subsection{Messages of berichten}
+
+\subsubsection{Synchrone berichten}
+\begin{definition}
+Een bericht is een communicatie tussen objecten die informatie overbrengt in de verwachting dat er een actie wordt ondernomen
+\end{definition}
+Als een bericht wordt ontvangen start een activiteit in het ontvangende object : dit noemt men activering. Als een object een boodschap ontvangt is het actief, en blijft actief tot het de boodschap volledig heeft afgehandeld. De activering toont de focus van de besturing: welke objecten op een bepaald moment worden uitgevoerd. Een geactiveerd object voert ofwel zijn eigen code uit of wacht op de return van een ander object waaraan het een bericht heeft gestuurd. Activering wordt getekend als een smalle rechthoek op de levenslijn. 
+
+Het eerste bericht wordt bovenaan getekend, meestal helemaal links met de opeenvolgende messages eronder. 
+
+Een message wordt voorgesteld door een volle lijn met een volle pijl. De naam van de message wordt bovenaan de pijl gezet met eventuele parameters. Wat een dergelijke message symboliseert is het eigenlijke aanroepen van een bepaalde methode van het object dat aan de pijlzijde van de message staat.
+
+\subsubsection{Return messages of terugkeerwaarden}
+Naast asynchrone messages kunnen ook waarden terug gegeven worden. Dit wordt voorgesteld door een pijl met stippellijn en een niet gevulde pijlpunt. Boven de stippellijn plaats je de naam van de waarde die je teruggeeft. 
+
+
+\subsection{Loop}
+Het is mogelijk om een loop te defini\"eren: je tekent hiervoor een rechthoek rond de messages die je wil herhalen en je schrijft de loopvoorwaarde linksbovenaan in de rechthoek. 
+
+\subsection{Alternatief}
+Het is mogelijk om gebaseerd op een bepaalde waarde een sequentie uit te voeren. Je tekent hiervoor een rechthoek met in het midden een stipellijn. Bovenaan de rechthoek zet je de voorwaarde waarop je brancht, met eronder de sequentie die doorgaat als de voorwaarde geld. In het tweede dele onder de stippellijn in de rechthoek zet je het alternatieve verloop met een [else] conditie. 
+
+\section{Systeem Sequentie Diagram}
+\begin{definition}
+Een systeem sequentiediagram is een sequentiediagram dat alle interacties tussen actor(en) en het systeem van 1 use case scenario weergeeft. 
+\end{definition}
+
+Door deze beschrijving van de use case in een diagram te plaatsen kun je gemakkelijk inzicht krijgen in de systeemeisen die een eindgebruiker verwacht. Een Systeem Sequentie Diagram (SSD) is dus een speciaal SD die de interactie tussen de actor en het systeem toont voor 1 use case scenario. Een SSD toont dus de acties (systeemevents) die een externe actor genereert (incluis de orde en systeemoperaties die als gevolg van de systeemevents uitgevoerd worden) in een afbeelding. In een use case worden de verschillende stappen ook genummerd. Dit is belangrijk want die volgorde zal ook verticaal weergegeven worden in een SSD.
+
+\subsection{Nut van SSD}
+\begin{itemize}
+	\item SSD geeft inzicht in de systeemeisen die een eindgebruiker verwacht
+	\item SSD toont de systeem boodschappen/operaties = systeemgedrag
+	\item SSD toont wat het systeem moet doen, niet hoe (black box)
+	\item SSD bevat de systeemoperaties. Als een actor communiceert met het systeem gebeurt dit altijd via dergelijke systeemoperaties. Dus alle mogelijk communicatie die een actor kan hebben met het systeem, wordt voorgesteld door een systeemoperatie op een SSD
+	\item Als we dan al die gevonden systeemoperaties proberen uit te werken (ontwerp + implementatie) dan krijgt onze software vorm. Het is dus eigenlijk een startpunt voor het ontwerp.
+\end{itemize}
+
+Aangeraden wordt om een SSD aan te maken voor het normale verloop en veel voorkomende of complexe alternatieve scenario's.
+
+\subsection{Opstellen van een SSD via een UC}
+\begin{enumerate}
+	\item Kies een use case scenario. 
+	\item Teken een levenslijn voor elke actor die in dit use case scenario een interactie heeft met het systeem. Benoem actor.
+	\item Teken een rechthoek en bijhorende levenslijn die het systeem als een blackbox voorstelt
+	\item Overloop gekozen use case scenario (van 1 \dots einde)
+\begin{itemize}
+	\item Voor elke actie die de actor uitvoert, dient een boodschap te worden toegevoegd aan het SSD. 
+	\item Wat het systeem dan uitvoert is black box (is op SSD niet belangrijk). We tekenen enkel een activeringsblokje om aan te duiden dat het systeem een actie zal uitvoeren op vraag van de actor. 
+	\item Als het systeem informatie teruggeeft aan de actor dan tekenen we een of meerdere terugkeerpijlen. Bovenop plaatsen we welke informatie de actor terugkrijgt.
+\end{itemize}
+\end{enumerate}
+
+\subsubsection{Opmerkingen}
+\begin{itemize}
+	\item Duidelijke naamgeving voor de systeemboodschappen 
+\begin{itemize}
+	\item Moet duidelijk zeggen wat er gevraagd wordt aan het systeem, wat de bedoeling is dat het systeem doet. (Niet wat de actor doet!)
+	\item Moet de bedoeling op een hoog abstractieniveau weergeven en niet in termen van inputtechnologie
+	\item Sluit aan bij het gebruikte jargon in het domeinmodel
+	\item Formuleert een opdracht \texttt{doeIets} ($\Rightarrow$ starten met de stam van een werkwoord)
+	\item Gegevens die meegegeven worden aan het systeem worden tussen ronde haakjes weergegeven. We noemen dit parameters. Deze parameters zijn informatie die het systeem nodig heeft om zijn taak uit te voeren.
+\end{itemize}
+	\item Het systeem retourneert gegevens
+	\item Het systeem geeft informatie aan de actor. Voor sommige informatie zijn gegevens nodig, voor andere niet.
+	\item Als het systeem informatie uit het domein teruggeeft, dan tekenen we een pijl, anders niet
+
+\end{itemize}
+
+\section{Operation Contract}
+
+Een operation contract is een onderdeel van de analyse die de veranderingen in het systeem gaat vastleggen ten gevolge van een systeemoperatie. We gaan voor elke systeemoperatie die een dergelijke verandering teweeg brengt een OC maken. Let op! Niet alle systeemoperaties hebben een gevolg op de staat van het systeem.
+
+\subsection{Voorstelling}
+Een operation  contract is een tabel die bestaat uit volgende zaken:
+\begin{itemize}
+	\item \textbf{Operation} : naam van betreffende operatie en de paramters
+	\item \textbf{Cross References }: naam van de gerelateerde UCs
+	\item \textbf{Precondities} : voorwaarden die voldaan moetne zijn voordat de operatie uitgevoerd wordt.
+	\item \textbf{Postcondities} : gedetailleerde beschrijving van de gewijzigde toestand van de domeinobjecten na de uitvoering van de operatie. 
+\end{itemize}
+
+Een operation contract zet je dan in een vergelijkbare tabel:
+
+\begin{table}[htbp]
+	\centering
+		\begin{tabular}{|l|p{9cm}|}
+			\hline
+			Contract & \\
+			\hline
+			Operation & \\
+			\hline
+			Cross References & \\
+			\hline
+			Precondities & \\
+			\hline
+			Postcondities & \\
+			\hline
+		\end{tabular}
+	\caption{OC template}
+	\label{tab:OCTemplate}
+\end{table}
+
+\subsection{Wanneer een OC maken}
+
+Een operation contract stellen we dus op bij het veranderen van de staat van het systeem door de systeemoperatie. Er zijn drie manieren waarop dit kan gebeuren:
+\begin{enumerate}
+	\item Creatie van instantie/Verwijdering van een instantie
+	\item Creatie van een associatie/Verbreking van een associatie
+	\item Wijziging van attributen
+\end{enumerate}
+
+Wanneer dus na een systeemoperatie een van de bovengenoemde acties uitgevoerd geweest zijn, dan stellen we een operation contract op. Deze OC's zullen ons helpen bij het verdere ontwerp (wat er allemaal IN die zwarte doos gebeurt). Bij dat ontwerp moeten we ervoor zorgen dat we de beschreven postcondities bereiken.
+
+
+
+
+
+
